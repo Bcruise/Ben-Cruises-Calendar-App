@@ -70,7 +70,15 @@ for (var a = 0; a < mainArray.length; a++) {
     timeSection.addClass("col-1 timeSection");
     timeSection.text(mainArray[a].time);
 
+    var saveButton = $('<button>');
+    saveButton.addClass("col-1 saveButton");
+    saveButton.attr('id', a);
+
     var textArea = $('<textarea>');
+    textArea.attr('id', a);
+    if (mainArray[a].innerText != "") {
+        textArea.text(mainArray[a].innerText);
+    }
     
     var hourNow = moment().format('HH');
     
@@ -82,11 +90,19 @@ for (var a = 0; a < mainArray.length; a++) {
         textArea.addClass("col-10 textArea grey");
     }
 
-    var saveButton = $('<button>');
-    saveButton.addClass("col-1 saveButton");
+    var carryTextArray = ['', '', '', '', '', '', '', '', ''];
+    textArea.on('input', function (event) {
+        carryTextArray[event.target.id] = event.target.value;
+    });
 
+    saveButton.on('click', function (event) {
+        mainArray[event.target.id].innerText = carryTextArray[event.target.id];
+        localStorage.setItem('mainArray', JSON.stringify(mainArray));
+    })
+    
     var faSaveIcon = $('<i></i>');   
     faSaveIcon.addClass("far fa-save fa-lg");
+    faSaveIcon.attr('id', a);
 
     var container = $('.container');
     container.append(eachHour);

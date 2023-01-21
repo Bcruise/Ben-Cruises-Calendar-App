@@ -112,13 +112,11 @@ textarea {
 }
 
 .grey {
-  background-color: grey;
-  opacity: 0.3;
+  background-color: lightgrey;
 }
 
 .red {
   background-color: red;
-  opacity: 0.75;
 }
 
 .green {
