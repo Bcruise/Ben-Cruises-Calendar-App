@@ -59,7 +59,7 @@ if (localStorage.getItem('mainArray') == null) {
     mainArray = JSON.parse(localStorage.getItem('mainArray'));
 }
 
-// function
+// for loop
 
 for (var a = 0; a < mainArray.length; a++) {
     var eachHour = $('<div>');
